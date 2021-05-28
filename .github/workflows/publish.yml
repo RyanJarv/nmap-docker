@@ -21,7 +21,7 @@ jobs:
         with:
           image: 'tristanrobert/nmap-docker:${{ github.sha }}'
           exit-code: '1'
-          exit-level: WARN
+          exit-level: FATAL
       
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
