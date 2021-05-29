@@ -4,10 +4,10 @@ with_vulnerabilities="$3"
 OUTDIR="/data"
 if [[ "$with_vulnerabilities" == "true" ]]; then
   echo "Scanning with vulners script ..."
-  nmap --privileged -sV --script vulners --script-args mincvss=5.0 -oA "$OUTDIR/$1" "$2"
+  nmap -sV --script vulners --script-args mincvss=5.0 -oA "$OUTDIR/$1" "$2"
 else
   echo "Scanning without vulners script ..."
-  nmap --privileged -sT -oA "$OUTDIR/$1" "$2"
+  nmap -sT -oA "$OUTDIR/$1" "$2"
 fi
 
 # Convert XML to HTML report
