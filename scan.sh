@@ -1,8 +1,10 @@
 #!/bin/bash
 
-OUTDIR="/data"
-echo "Running: nmap -oA $OUTDIR/$1 $@"
-nmap -oA "$OUTDIR/$1" "$@"
+OUTFILE="/data/$1"
+shift
+
+echo "Running: nmap -oA $OUTFILE $@"
+nmap -oA "$OUTFILE" "$@"
 
 # Convert XML to HTML report
-xsltproc -o "$OUTDIR/$1.html" /tmp/nmap-bootstrap.xsl "$OUTDIR/$1.xml"
+xsltproc -o "${OUTFILE}.html" /tmp/nmap-bootstrap.xsl "${OUTFILE}.xml"
