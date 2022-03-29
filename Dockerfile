@@ -1,7 +1,5 @@
 FROM alpine:latest
 ARG nmap_ver=7.91
-LABEL org.opencontainers.image.source="https://github.com/MTES-MCT/nmap-docker"
-LABEL org.opencontainers.image.vendor="Tristan Robert"
 RUN apk update && \
     apk add --no-cache \
     curl \
@@ -14,4 +12,4 @@ COPY ./scan.sh /tmp/scan.sh
 RUN chmod +x /tmp/scan.sh
 VOLUME [ "/data" ]
 ENTRYPOINT ["sh", "/tmp/scan.sh"]
-CMD ["nmap-scanme", "scanme.nmap.org", "true"]
+CMD ["-sT", "-F", "-Pn", "scanme.nmap.org"]
