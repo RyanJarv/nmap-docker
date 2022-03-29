@@ -12,4 +12,3 @@ COPY ./scan.sh /tmp/scan.sh
 RUN chmod +x /tmp/scan.sh
 VOLUME [ "/data" ]
 ENTRYPOINT ["sh", "/tmp/scan.sh"]
-CMD ["-sT", "-F", "-Pn", "scanme.nmap.org"]
